@@ -13,6 +13,10 @@ public class HungrySingleton implements Serializable{
     }
 
     private HungrySingleton() {
+        // 防御反射调用
+        if (hungrySingleton != null) {
+            throw new RuntimeException("单例构造器禁止反射调用");
+        }
     }
 
     public static HungrySingleton getInstance(){

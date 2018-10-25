@@ -11,7 +11,7 @@ public class LazyDoubleCheckSingleton {
     private LazyDoubleCheckSingleton() {
     }
 
-    public synchronized static LazyDoubleCheckSingleton getInstance() {
+    public static LazyDoubleCheckSingleton getInstance() {
         if (lazyDoubleCheckSingleton == null) {
             synchronized (LazyDoubleCheckSingleton.class) {
                 if (lazyDoubleCheckSingleton == null) {

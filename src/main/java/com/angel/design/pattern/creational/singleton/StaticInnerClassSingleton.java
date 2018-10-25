@@ -8,10 +8,14 @@ public class StaticInnerClassSingleton {
         private static StaticInnerClassSingleton staticInnerClassSingleton = new StaticInnerClassSingleton();
     }
 
-    private static StaticInnerClassSingleton getInstance() {
+    public static StaticInnerClassSingleton getInstance() {
         return InnerClass.staticInnerClassSingleton;
     }
 
     private StaticInnerClassSingleton() {
+        // 防御反射调用
+        if (InnerClass.staticInnerClassSingleton != null) {
+            throw new RuntimeException("单例构造器禁止反射调用");
+        }
     }
 }
